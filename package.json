@@ -1,0 +1,22 @@
+{
+  "name": "readme-generator-",
+  "version": "1.0.0",
+  "description": "Automated Read-Me Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veektur123/ReadMe-Generator-.git"
+  },
+  "author": "Victor Rivera veektur@hotmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veektur123/ReadMe-Generator-/issues"
+  },
+  "homepage": "https://github.com/veektur123/ReadMe-Generator-#readme",
+  "dependencies": {
+    "inquirer": "^9.1.4"
+  }
+}
