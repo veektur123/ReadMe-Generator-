@@ -2,7 +2,63 @@ console.log("hello")
 
 const fs = require('fs');
 const inquirer = require('inquirer');
-inquirer
+
+  function badgeGenerator (badgeString){
+    switch(badgeString) {
+        case 'MIT License':
+            return "![MIT License Badge](https://img.shields.io/badge/License-MIT-green.svg)"
+        case 'Mozilla License':
+            return "![Mozilla License Badge]((https://img.shields.io/badge/License-Mozilla-green.svg))"
+        case 'Apache License':
+            return "![Apache License Badge]((https://img.shields.io/badge/License-Apache-green.svg))"
+        default:
+            return ""
+      }
+  }
+  function generateMarkdown (data){
+    return `# ${data.name} ${badgeGenerator(data.license)}
+
+## Table of Contents
+[Description](#description)
+
+[Installation Instructions](#installation-instructions)
+
+[Usage Instructions](#usage-instructions)
+
+[Test Instructions](#test-instructions)
+
+[Contribution Guidelines](#contribution-guidelines)
+
+[Contact Information](#contact-information)
+
+
+
+
+### Description
+${data.description}
+
+### Installation Instructions
+${data.installation}
+
+### Usage Instructions
+${data.usage}
+
+### Contribution Guidelines
+${data.contribution}
+
+### Test Instructions
+${data.test}
+
+### Contact Information
+Github : [${data.github}](https://github.com/${data.github}/)
+E-Mail :${data.email}
+
+### License
+This project is licensed by: ${data.license}
+    `
+  }
+
+  inquirer
   .prompt([
     /* Pass your questions in here */
     {
@@ -113,7 +169,7 @@ inquirer
         type: 'list',
         list: 'Which license should your project use?',
         name: 'license',
-        choices:['N/A','MIT License', 'Mozilla License', 'Apache License','GNU License', 'Creative Commons Zero License'],
+        choices:['MIT License', 'Mozilla License', 'Apache License',],
         validate: license => {
             if(license) {
             return true
@@ -125,5 +181,6 @@ inquirer
   ])
   
   .then((response) => {
-    // Use user feedback for... whatever!!
+    const generatedMarkdown = generateMarkdown(response)
+    fs.writeFileSync("README.md",generatedMarkdown)
   })

@@ -4,7 +4,7 @@
   "description": "Automated Read-Me Generator",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "generate:readme": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/veektur123/ReadMe-Generator-#readme",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^8.0.0"
   }
 }
